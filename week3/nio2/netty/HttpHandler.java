@@ -10,6 +10,7 @@ import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.util.ReferenceCountUtil;
 import java0.nio2.apache.HttpClient;
+import java0.nio2.apache.OkHttp;
 
 import static io.netty.handler.codec.http.HttpHeaderNames.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaderValues.KEEP_ALIVE;
@@ -34,6 +35,7 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
             String uri = fullRequest.uri();
             String remoteCallUrl = "http://localhost:8801";
             String body = HttpClient.getHttpClient(remoteCallUrl);
+            //String body = OkHttp.getOkHttp(remoteCallUrl);
             handlerTest(fullRequest, ctx, body);
         } catch(Exception e) {
             e.printStackTrace();

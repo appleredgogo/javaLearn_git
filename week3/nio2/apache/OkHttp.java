@@ -14,27 +14,30 @@ import java.io.IOException;
  */
 public class OkHttp {
     public static void main(String[] args) throws IOException {
-        getOkHttp();
+        getOkHttp("http://localhost:8801");
     }
-    public static void getOkHttp(){
+    public static String getOkHttp(String remoteCallUrl){
 
         OkHttpClient okHttpClient = new OkHttpClient();
         //String url = String.format("http://%s:%s/", "localhost", "8801");
-        String url ="http://localhost:8801";
-        Request request = new Request.Builder().url(url).get().build();
+        Request request = new Request.Builder().url(remoteCallUrl).get().build();
         Call call = null;
         Response response = null;
+        String result = "";
         try {
             call = okHttpClient.newCall(request);
             response = call.execute();
             System.out.println(response.body().string());
+            result = response.body().string();
         }catch (IOException e){
             System.out.println("连接失败！！"+e.getMessage());
+            result = "连接失败！！";
         }finally {
             //5.关闭资源
             response.close();
             response.body().close();
         }
+        return result;
 
     }
 }
