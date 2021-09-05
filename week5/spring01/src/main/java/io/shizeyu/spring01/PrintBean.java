@@ -15,7 +15,7 @@ public class PrintBean {
         }*/
         Student st = new Student();
         System.out.println(st.getName());
-        School school01 = (School)applicationContext.getBean(School.class);
+        School school01 = applicationContext.getBean(School.class);
         Klass klass01 = applicationContext.getBean(Klass.class);
         Student student01 = applicationContext.getBean(Student.class);
         try {
