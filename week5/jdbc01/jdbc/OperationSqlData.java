@@ -12,10 +12,11 @@ public class OperationSqlData {
 
     public static void main(String[] args) {
         saveDatas();
+        updDatas();
         selectDatas();
         delDatas();
     }
-
+    //查询操作
     public static void selectDatas(){
         ResultSet rs = null;
         Connection connection = null;
@@ -28,7 +29,7 @@ public class OperationSqlData {
             while (rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                System.out.println(id+"--"+name);
+                System.out.println("查询数据:"+id+"--"+name);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,6 +38,7 @@ public class OperationSqlData {
             JDBCUtils.close(rs,connection,statement);
         }
     }
+    //新增操作
     public static void saveDatas(){
         ResultSet rs = null;
         Connection connection = null;
@@ -54,6 +56,7 @@ public class OperationSqlData {
             JDBCUtils.close(rs,connection,statement);
         }
     }
+    //删除操作
     public static void delDatas(){
         ResultSet rs = null;
         Connection connection = null;
@@ -68,6 +71,23 @@ public class OperationSqlData {
             e.printStackTrace();
         }finally {
             //释放资源
+            JDBCUtils.close(rs,connection,statement);
+        }
+    }
+    //修改操作
+    public static void updDatas(){
+        ResultSet rs = null;
+        Connection connection = null;
+        Statement statement = null;
+        try {
+            connection = JDBCUtils.getConnection();
+            statement = connection.createStatement();
+            String sql = "update student set name='szy' where id =10";
+            //执行改操作
+            System.out.println("修改操作:"+ statement.executeUpdate(sql));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
             JDBCUtils.close(rs,connection,statement);
         }
     }
