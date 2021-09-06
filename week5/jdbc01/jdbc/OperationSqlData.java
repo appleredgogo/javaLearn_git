@@ -11,8 +11,8 @@ import java.sql.Statement;
 public class OperationSqlData {
 
     public static void main(String[] args) {
-        selectDatas();
         saveDatas();
+        selectDatas();
         delDatas();
     }
 

@@ -21,7 +21,7 @@ public class JDBCUtils {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 //2.获取连接
-                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "root");
+                Connection cn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", "123456");
                 return cn;
             } catch (Exception e) {
                 e.printStackTrace();
