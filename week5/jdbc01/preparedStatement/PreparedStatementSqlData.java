@@ -50,7 +50,7 @@ public class PreparedStatementSqlData {
     private static void query(PreparedStatement st, ResultSet rs) throws SQLException {
         rs = st.executeQuery();
         while(rs.next()) {
-            System.out.println(rs.getObject("id"));
+            System.out.println(rs.getObject("name"));
         }
     }
     /**
