@@ -3,7 +3,7 @@ USE `shop`;
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int NOT NULL COMMENT '主键',
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(25) NOT NULL COMMENT '姓名',
   `password` varchar(25) NOT NULL COMMENT '密码',
   `account` varchar(25) NOT NULL COMMENT '帐号',
@@ -15,7 +15,7 @@ CREATE TABLE `users` (
 
 DROP TABLE IF EXISTS `stores`;
 CREATE TABLE `stores` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `store_name` varchar(30) NOT NULL COMMENT '商店名称',
   `description` varchar(2000) NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
@@ -23,7 +23,7 @@ CREATE TABLE `stores` (
 
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
   `product_name` varchar(30) NOT NULL COMMENT '商品名称',
   `description` varchar(2000) NOT NULL COMMENT '描述',
   `price` float(11,2) NOT NULL COMMENT '价格',
@@ -35,7 +35,7 @@ CREATE TABLE `goods` (
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
   `user_id` int NOT NULL COMMENT '用户id',
   `order_list` varchar(2000) NOT NULL COMMENT '订单列表',
   `status` varchar(5) NOT NULL COMMENT '订单状态',
