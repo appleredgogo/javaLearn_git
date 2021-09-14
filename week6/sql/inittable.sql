@@ -11,7 +11,7 @@ CREATE TABLE `users` (
   `amount` float(11,2) NOT NULL COMMENT '账户余额',
   `phone` varchar(25) NOT NULL COMMENT '手机号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `stores`;
 CREATE TABLE `stores` (
@@ -19,7 +19,7 @@ CREATE TABLE `stores` (
   `store_name` varchar(30) NOT NULL COMMENT '商店名称',
   `description` varchar(2000) NOT NULL COMMENT '描述',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods` (
@@ -31,7 +31,7 @@ CREATE TABLE `goods` (
   `store_id` int(11) NOT NULL COMMENT '所属商店id',
   PRIMARY KEY (`id`),
   foreign key (store_id) references stores(id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
@@ -41,8 +41,8 @@ CREATE TABLE `orders` (
   `status` varchar(5) NOT NULL COMMENT '订单状态',
   `total_price` float(11,2) NOT NULL,
   `logistics_status` varchar(2000) NOT NULL COMMENT '物流情况',
-  `create_time` int NOT NULL COMMENT '创建时间',
-  `update_time` int NOT NULL COMMENT '更新时间',
+  `create_time` bigint NOT NULL COMMENT '创建时间',
+  `update_time` bigint NOT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`),
   foreign key (user_id) references users(id)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
