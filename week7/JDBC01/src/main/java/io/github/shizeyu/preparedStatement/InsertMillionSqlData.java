@@ -48,7 +48,7 @@ public class InsertMillionSqlData {
         long endTime = System.currentTimeMillis();
         System.out.println("结束时间:"+startTime);
         long sumtime = (endTime - startTime) / 1000;
-        System.out.println("耗时：" + sumtime +" s ");
+        System.out.println("耗时：" + sumtime +" 秒 ");
         JDBCUtils.close(rs,cn,ps);
     }
 
