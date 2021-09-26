@@ -1,0 +1,33 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/shop?characterEncoding=utf-8
+        username: root
+        password: 123456
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/shop?characterEncoding=utf-8
+        username: root
+        password: 123456
+    sharding:
+      default-data-source-name: ds0
+      tables:
+        t_order:
+          key-generator-column-name: id
+          actual-data-nodes: ds$->{0..1}.t_order_$->{0..15}
+          database-strategy:
+            inline:
+              sharding-column: order_id
+              algorithm-expression: ds$->{order_id%2}
+            table-strategy:
+              inline:
+                sharding-column: id
+                algorithm-expression: t_order_$->{id%16}
+    props:
+      sql:
+        show: true
