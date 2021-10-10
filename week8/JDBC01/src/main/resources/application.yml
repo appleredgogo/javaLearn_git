@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: sharding
+
+server:
+  port: 8081
